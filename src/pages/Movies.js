@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import VideoCart from '../components/VideoCart';
 import { getindex } from '../helpers/Request';
+
 import Layout from '../components/Layout';
 
 const Movies = ({ videos }) => {
-  useEffect(() => {}, [videos]);
   return (
     <Layout>
-      <div className='container'>
-        {videos.map((video, key) => (
-          <VideoCart video={video} key={key} />
-        ))}
-      </div>
+      <div className='container'>{videos.map((video, key) => <VideoCart video={video} key={key} />) || <h3>404 هیچ ویدیویی پیدا نشد</h3>}</div>
     </Layout>
   );
 };

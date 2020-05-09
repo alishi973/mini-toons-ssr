@@ -34,17 +34,32 @@
 }
 .movie-cart-footer {
   background-color: dodgerblue;
-  color:white;
+  color: white;
   display: flex;
   justify-content: flex-end;
-  padding:0px 15px;
+  padding: 0px 15px;
   align-items: center;
   bottom: 0;
   height: 15%;
-  *{
+  * {
     margin-left: 10px;
+    cursor: pointer;
   }
 }
+.container {
+  padding: 20px;
+}
+.header {
+  text-align: right;
+}
+.video-player {
+  width: 80%;
+  text-align: right;
+}
+.content {
+  text-align: right;
+}
+
 @media screen and (max-width: $break-small) {
 }
 
