@@ -11,11 +11,16 @@
   "dependencies": {
     "@jaredpalmer/after": "latest",
     "after": "^0.8.2",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "razzle": "^3.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
     "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "razzle-plugin-scss": "^3.0.0"
   }
 }

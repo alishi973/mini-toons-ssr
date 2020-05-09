@@ -1,0 +1,13 @@
+@import url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css');
+* {
+  font-family: vazir;
+  text-align: center;
+  direction: rtl;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+@import 'variables';
+@import 'movies';
+@import 'movie';

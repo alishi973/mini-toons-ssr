@@ -1,0 +1,51 @@
+.movie-cart {
+  display: flex;
+  flex-direction: row;
+  background-color: lightgrey;
+  overflow: hidden;
+  box-shadow: 0px 7px 20px 0px grey;
+  border-radius: 8px;
+}
+.movie-cart-image {
+  * {
+    display: block;
+    z-index: 99;
+    height: 100%;
+  }
+}
+.movie-cart-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.movie-cart-info {
+  padding: 0px 20px;
+}
+.movie-cart-title {
+  * {
+    text-align: right;
+  }
+}
+.movie-cart-content {
+  * {
+    text-align: right;
+  }
+}
+.movie-cart-footer {
+  background-color: dodgerblue;
+  color:white;
+  display: flex;
+  justify-content: flex-end;
+  padding:0px 15px;
+  align-items: center;
+  bottom: 0;
+  height: 15%;
+  *{
+    margin-left: 10px;
+  }
+}
+@media screen and (max-width: $break-small) {
+}
+
+// box-shadow: 0px 7px 20px 0px grey;
