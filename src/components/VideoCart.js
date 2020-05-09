@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { VideoInfo } from '../ContextProvider/Context';
-import e from 'express';
 
 const VideoCart = ({ video }) => {
   const currentVideo = {
