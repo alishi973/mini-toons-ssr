@@ -11,4 +11,4 @@ npm start
 ```
 
 
-Tanks [Mini-toons API](http://minitoons.ir)
+Thanks [Mini-toons API](http://minitoons.ir)
