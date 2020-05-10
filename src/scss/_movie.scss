@@ -1,4 +1,5 @@
 .movie-cart {
+  position: relative;
   display: flex;
   flex-direction: row;
   background-color: lightgrey;
@@ -61,6 +62,31 @@
 }
 
 @media screen and (max-width: $break-small) {
+  .movie-cart {
+    height: 150px;
+    width: 100%;
+    box-shadow: none;
+    border-radius: none;
+  }
+  .movie-cart-image {
+    z-index: 1;
+    width: 30%;
+  }
+  .movie-cart-content {
+    display: none;
+  }
+  .movie-cart-info {
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .movie-cart-footer{
+    background-color:transparent;
+    padding-left: 0;
+  }
+  .movie-cart-left {
+  }
 }
 
 // box-shadow: 0px 7px 20px 0px grey;

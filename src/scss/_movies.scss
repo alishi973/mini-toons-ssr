@@ -1,12 +1,77 @@
+.desktop-container {
+  margin: 0 auto;
+  display: grid;
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+}
 .container {
   margin: 0 auto;
   display: grid;
   grid-auto-rows: auto;
   grid-gap: 20px;
 }
+.mobile-container {
+  margin: 0 auto;
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+  display: none;
+}
 .fav {
   color: red;
 }
 .unfav {
   color: white;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+}
+
+.cart-disabled {
+  background-color: gray;
+}
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  color: white;
+  align-items: center;
+}
+@media screen and (max-width: $break-small) {
+  .container {
+    grid-gap: 10px;
+  }
+  .loader {
+    width: 60px;
+    height: 60px;
+  }
 }

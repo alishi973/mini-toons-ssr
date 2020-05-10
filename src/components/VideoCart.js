@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const VideoCart = ({ video }) => {
@@ -7,13 +7,17 @@ const VideoCart = ({ video }) => {
     image: video.coverimg,
     id: video.ID,
     content: video.storyplot.value,
-    links: video.dllinks,
+    links: video.dllinks || false,
     art: video.backdrop_img,
   };
-
-  //   const content = video.storyplot.value.slice(0, 100) + '...';
-  return (
-    <div className='movie-cart'>
+  const addToFavorites = (e) => {
+    //TODO:Add to Favorites
+    e.stopPropagation();
+    e.preventDefault();
+    alert('انشالله اد میکنم');
+  };
+  const CartContent = () => (
+    <>
       <div className='movie-cart-image'>
         <img src={currentVideo.image} />
       </div>
@@ -22,18 +26,34 @@ const VideoCart = ({ video }) => {
           <div className='movie-cart-title'>
             <h3>{currentVideo.name}</h3>
           </div>
-
           <div className='movie-cart-content'>
             <p>{currentVideo.content}</p>
           </div>
         </div>
         <div className='movie-cart-footer'>
-          <Link to={{ pathname: '/show', state: currentVideo }}>جزئیات پخش</Link>
-          <p className='icon unfav'>&#10084;</p>
+          <p className='icon unfav' onClick={addToFavorites}>&#10084;</p>
         </div>
       </div>
-    </div>
+    </>
   );
+
+  if (currentVideo.links.length < 1) {
+    return (
+      <a className={`movie-cart cart-disabled`} href={`http://www.minitoons.ir/p/${currentVideo.id}`}>
+        <CartContent />
+        {currentVideo.links.length < 1 && (
+          <div className='overlay'>
+            <h1>فیلم فقط در مینی تونز</h1>
+          </div>
+        )}
+      </a>
+    );
+  } else
+    return (
+      <Link className={`movie-cart `} to={{ pathname: `/video/${currentVideo.id}`, state: currentVideo }}>
+        <CartContent />
+      </Link>
+    );
 };
 
 export default VideoCart;

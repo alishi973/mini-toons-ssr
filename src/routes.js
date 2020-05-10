@@ -12,7 +12,7 @@ export default [
     }),
   },
   {
-    path: '/show',
+    path: '/video/:id',
     exact: true,
     component: asyncComponent({
       loader: () => import('./pages/Movie'),
