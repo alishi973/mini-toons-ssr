@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const VideoCart = ({ video }) => {
   const currentVideo = {
@@ -31,7 +31,9 @@ const VideoCart = ({ video }) => {
           </div>
         </div>
         <div className='movie-cart-footer'>
-          <p className='icon unfav' onClick={addToFavorites}>&#10084;</p>
+          <p className='icon unfav' onClick={addToFavorites}>
+            &#10084;
+          </p>
         </div>
       </div>
     </>
@@ -50,7 +52,7 @@ const VideoCart = ({ video }) => {
     );
   } else
     return (
-      <Link className={`movie-cart `} to={{ pathname: `/video/${currentVideo.id}`, state: currentVideo }}>
+      <Link className={`movie-cart `} to={{ pathname: `/video/${video.faname.value}`, state: currentVideo }}>
         <CartContent />
       </Link>
     );

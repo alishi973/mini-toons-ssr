@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import VideoCart from '../components/VideoCart';
+import { withRouter } from 'react-router-dom';
 import { getindex } from '../helpers/Request';
 import Axios from 'axios';
 
@@ -13,6 +14,7 @@ const Movies = ({ videos, index }) => {
   let steps = 0;
   useEffect(() => {
     window.addEventListener('scroll', onScroll, false);
+    console.log('re-render');
     return () => {
       window.removeEventListener('scroll', onScroll, false);
     };
@@ -23,17 +25,24 @@ const Movies = ({ videos, index }) => {
 
   const FetchNewData = async () => {
     loadingSet(true);
-    const newVideo = await Axios.get(`videos/${++index}`);
+    const newVideo = await getindex(++index);
     steps++;
-    videos.push(...newVideo.data);
+    if (newVideo.length > 0) videos.push(...newVideo);
     loadingSet(false);
   };
 
+  const Video = () => {
+    if (videos && !videos.status) {
+      return videos.map((video, key) => <VideoCart video={video} key={key} />);
+    } else {
+      return <h2>ارتباط برقرار نشد</h2>;
+    }
+  };
   return (
     <Layout>
       <div className='desktop-container'>
         <div className='container'>
-          {videos.map((video, key) => <VideoCart video={video} key={key} />) || <h3>404 هیچ ویدیویی پیدا نشد</h3>}
+          <Video />
           {loading && <div className='loader'></div>}
         </div>
       </div>
@@ -44,5 +53,4 @@ Movies.getInitialProps = async () => {
   const index = getRandomNumber();
   return { index, videos: await getindex(index) };
 };
-
-export default Movies;
+export default withRouter(Movies);

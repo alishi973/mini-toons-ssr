@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Layout from '../components/Layout';
 const Movie = (props) => {
   const [state, stateSet] = useState({ ...props.location.state, currentLink: null });
   const { id } = props.match.params;
+  console.log(props)
 
   useEffect(() => {
     return () => {
@@ -41,4 +42,4 @@ const Movie = (props) => {
   );
 };
 
-export default withRouter(Movie);
+export default Movie;
