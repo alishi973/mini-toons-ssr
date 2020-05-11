@@ -31,9 +31,9 @@ const VideoCart = ({ video }) => {
           </div>
         </div>
         <div className='movie-cart-footer'>
-          <p className='icon unfav' onClick={addToFavorites}>
+          {/* <p className='icon unfav' onClick={addToFavorites}>
             &#10084;
-          </p>
+          </p> */}
         </div>
       </div>
     </>
@@ -41,11 +41,11 @@ const VideoCart = ({ video }) => {
 
   if (currentVideo.links.length < 1) {
     return (
-      <a className={`movie-cart cart-disabled`} href={`http://www.minitoons.ir/p/${currentVideo.id}`}>
+      <a className={`movie-cart cart-disabled`} href={`http://minitoons.ir/p/${currentVideo.id}`}>
         <CartContent />
         {currentVideo.links.length < 1 && (
           <div className='overlay'>
-            <h1>فیلم فقط در مینی تونز</h1>
+            <h1>پخش فقط در مینی تونز</h1>
           </div>
         )}
       </a>

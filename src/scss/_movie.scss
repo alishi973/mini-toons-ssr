@@ -50,11 +50,8 @@
 .container {
   padding: 20px;
 }
-.header {
-  text-align: right;
-}
 .video-player {
-  width: 80%;
+  // width: 80%;
   text-align: right;
 }
 .content {
@@ -81,8 +78,14 @@
     display: flex;
     align-items: center;
   }
-  .movie-cart-footer{
-    background-color:transparent;
+  .movie-cart-title {
+    * {
+      text-align: center;
+    }
+  }
+  .movie-cart-footer {
+    background-color: transparent;
+    display: none;
     padding-left: 0;
   }
   .movie-cart-left {

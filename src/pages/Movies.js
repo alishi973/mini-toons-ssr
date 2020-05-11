@@ -39,14 +39,16 @@ const Movies = ({ videos, index }) => {
     }
   };
   return (
-    <Layout>
-      <div className='desktop-container'>
-        <div className='container'>
-          <Video />
-          {loading && <div className='loader'></div>}
+    <>
+      <Layout>
+        <div className='desktop-container'>
+          <div className='container'>
+            <Video />
+            {loading && <div className='loader'></div>}
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
 };
 Movies.getInitialProps = async () => {

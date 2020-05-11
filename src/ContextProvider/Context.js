@@ -8,9 +8,11 @@ const initialValue = {
   show: false,
 };
 export const VideoInfo = createContext(initialValue);
-const VideoProvider = ({ children }) => {
+
+const VideoProvider = (props) => {
   const [video, videoSet] = useState(initialValue);
 
-  return <VideoInfo.Provider value={{ video, videoSet }}>{children}</VideoInfo.Provider>;
+  console.log(props);
+  return <VideoInfo.Provider value={{ video, videoSet }}>{props.children}</VideoInfo.Provider>;
 };
 export default VideoProvider;

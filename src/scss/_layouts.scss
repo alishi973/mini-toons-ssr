@@ -1,0 +1,88 @@
+body {
+  margin: 0 auto;
+}
+.svg-icon {
+  width: 1.65em;
+  height: 1.65em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: gray;
+}
+
+.svg-icon circle {
+  stroke: gray;
+  stroke-width: 2;
+}
+
+svg > .active {
+  stroke: rgb(184, 75, 93);
+}
+
+.svg-icon > .active > circle {
+  * {
+    stroke: rgb(184, 75, 93);
+  }
+}
+
+.rtl {
+  text-align: right;
+}
+.header {
+  background-color: yellowgreen;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  color: white;
+}
+
+@media screen and (max-width: $break-small) {
+  .header {
+    position: fixed;
+
+    top: 0;
+    box-shadow: 0px 0px 8px 0px grey;
+    height: $header-size-mobile;
+    width: 100%;
+    z-index: 99;
+  }
+  .footer-mobile {
+    position: fixed;
+    bottom: 0;
+    z-index: 99;
+    width: 100%;
+    box-shadow: 0px 0px 10px 0px grey;
+    border-radius: 10px 10px 0px 0px;
+    background-color: whitesmoke;
+    height: $footer-size-mobile;
+    & ul > .active {
+      color: #e4147a;
+      * {
+        fill: #e4147a;
+      }
+    }
+    & ul {
+      list-style: none;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      height: 100%;
+      justify-content: space-around;
+      & li > a {
+        align-items: center;
+        display: flex;
+        flex-flow: column nowrap;
+        span {
+          font-size: 12px;
+          margin-top: 4px;
+        }
+      }
+    }
+  }
+}

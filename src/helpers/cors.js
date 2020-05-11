@@ -10,7 +10,6 @@ app.use((req, res, next) => {
 });
 
 app.get('/videos/:pagenumber', async (req, res) => {
-  console.log("injam")
   const url = `http://beta.minitoons.ir?api&type=listing&pagenum=${req.params.pagenumber}`;
   const post = await Axios.get(url);
   return res.send(post.data.posts);
