@@ -5,9 +5,10 @@ import { User, Search, Home } from '../helpers/svgs';
 const Layout = (props) => {
   const address = useLocation();
   const isActive = (route) => address.pathname.indexOf(route) > -1;
+
   const scrollToTop = (e) => {
-    if (address.pathname.indexOf('localhost/') === -1 && e) {
-      e.preventDefault();
+    e.preventDefault && e.preventDefault();
+    if (address.pathname.indexOf('localhost') === -1) {
       const c = document.documentElement.scrollTop || document.body.scrollTop;
       if (c > 0) {
         window.requestAnimationFrame(scrollToTop);
