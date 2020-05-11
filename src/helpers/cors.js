@@ -19,8 +19,9 @@ app.get('/getVideo/:videoName', async (req, res) => {
   res.send(video.posts.filter((eachVideo) => eachVideo.postname == req.params.videoName) || 404);
 });
 app.get('/search/:videoName', async (req, res) => {
-  const url = `http://beta.minitoons.ir/?api&type=listing&search=${req.params.videoName}&pagenum=1`;
-  const post = await Axios.get(url);
+  console.log(req.params);
+  const url = `http://beta.minitoons.ir/?api&type=listing&search=${req.params.videoName.replace(/ /g, '%20').trim()}&pagenum=1`;
+  const post = await Axios.get(encodeURI(url));
   return res.send(post.data.posts);
 });
 

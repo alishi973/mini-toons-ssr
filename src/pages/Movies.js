@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import VideoCart from '../components/VideoCart';
 import { withRouter } from 'react-router-dom';
 import { getindex } from '../helpers/Request';
-import Axios from 'axios';
 
 import Layout from '../components/Layout';
 

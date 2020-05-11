@@ -4,11 +4,10 @@ import { User, Search, Home } from '../helpers/svgs';
 
 const Layout = (props) => {
   const address = useLocation();
-  const isActive = (route) => address.pathname.indexOf(route) > -1;
-
+  const isActive = (route) => address.pathname === route;
   const scrollToTop = (e) => {
-    e.preventDefault && e.preventDefault();
-    if (address.pathname.indexOf('localhost') === -1) {
+    if (address.pathname == '/') {
+      e.preventDefault && e.preventDefault();
       const c = document.documentElement.scrollTop || document.body.scrollTop;
       if (c > 0) {
         window.requestAnimationFrame(scrollToTop);
@@ -19,7 +18,7 @@ const Layout = (props) => {
   return (
     <>
       <div className='header'>
-        <div></div>
+        <span></span>
 
         <div className='title'>
           <h3>مینی تونز</h3>
@@ -30,19 +29,19 @@ const Layout = (props) => {
       <>{props.children}</>
       <div className='footer-mobile'>
         <ul>
-          <li className={`${isActive('profile') ? 'active' : ''}`}>
+          <li className={`${isActive('/profile') ? 'active' : ''}`}>
             <Link to='/profile'>
               <User />
               <span>پروفایل</span>
             </Link>
           </li>
-          <li className={`${isActive('search  ') ? 'active' : ''}`}>
+          <li className={`${isActive('/search') ? 'active' : ''}`}>
             <Link to='/search'>
               <Search />
               <span>جستجو</span>
             </Link>
           </li>
-          <li className={`${isActive('localhost/') ? 'active' : ''}`}>
+          <li className={`${isActive('/') ? 'active' : ''}`}>
             <Link to='/' onClick={scrollToTop}>
               <Home active={true} />
               <span>خانه</span>

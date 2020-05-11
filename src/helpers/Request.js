@@ -10,7 +10,12 @@ export async function getindex(id = 0) {
 }
 
 export async function search(param) {
-  const req = await Axios.get(`${process.env.RAZZLE_CORSAPI}/search/${param}`);
-  const { totalpages, totalcount, posts } = req.data;
-  return { totalcount, totalpages, posts };
+  const url = `${process.env.RAZZLE_CORSAPI}search/${param}`;
+  try {
+    const req = await Axios.get(url);
+    const { totalpages, totalcount, posts } = req.data;
+    return { totalcount, totalpages, posts };
+  } catch (err) {
+    return { totalcount: 0, totalpages: [], err };
+  }
 }
