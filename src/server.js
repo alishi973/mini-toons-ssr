@@ -1,12 +1,27 @@
 import express from 'express';
 import { render } from '@jaredpalmer/after';
 import routes from './routes';
-import { getindex, search } from './helpers/Request';
+import Axios from 'axios';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 const chunks = require(process.env.RAZZLE_CHUNKS_MANIFEST);
 
 const server = express();
+
+server.get('/videos/:pagenumber', async (req, res) => {
+  console.log(req.params);
+  const url = `http://beta.minitoons.ir?api&type=listing&pagenum=${req.params.pagenumber}`;
+  const post = await Axios.get(url);
+  console.log('omad');
+  return res.send(post.data.posts);
+});
+server.get('/search/:videoName', async (req, res) => {
+  console.log(req.params);
+  const url = `http://beta.minitoons.ir/?api&type=listing&search=${req.params.videoName.replace(/ /g, '%20').trim()}&pagenum=1`;
+  const post = await Axios.get(encodeURI(url));
+  console.log('omad');
+  return res.json(post.data);
+});
 
 server
   .disable('x-powered-by')

@@ -64,7 +64,12 @@
   }
   .movie-cart-image {
     z-index: 1;
-    width: 30%;
+    width: 40%;
+    & img{
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+    }
   }
   .movie-cart-content {
     display: none;
