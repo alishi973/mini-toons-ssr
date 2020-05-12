@@ -13,7 +13,7 @@ export async function search(param) {
   const url = `${process.env.RAZZLE_CORSAPI}search/${param}`;
   try {
     const req = await Axios.get(url);
-    const { totalpages, totalcount, posts } = req.data;
+    const { totalpages = 0, totalcount = 0, posts = [] } = req.data;
     return { totalcount, totalpages, posts };
   } catch (err) {
     return { totalcount: 0, totalpages: [], err };

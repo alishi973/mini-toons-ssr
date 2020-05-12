@@ -1,33 +1,32 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import VideoCart from '../components/VideoCart';
+import SearchInput from '../components/InputField';
 import { search as searchFunction } from '../helpers/Request';
 import { Search as SearchSVG } from '../helpers/svgs';
 
 const Search = (props) => {
   const [loading, loadingSet] = useState(false);
-  const [search_items, search_itemsSet] = useState([]);
+  // TODO: Add Loader Data Fetch in bottom of page
+  const [search_items, search_itemsSet] = useState({ posts: [], totalpages: 0, totalcount: 0 });
   const [search_param, search_paramSet] = useState('');
 
-  var timer = null;
-  function keyDown(e) {
-    console.log(e.target.value);
-    search_paramSet(e.target.value);
-    if (e.target.value.length < 1) return clearTimeout(timer);
+  const onChange = (value) => {
+    search_paramSet(value);
+    if (value.length < 1) return loadingSet(false);
     loadingSet(true);
-    clearTimeout(timer);
-    timer = setTimeout(sendRequest, 2000);
-  }
+  };
+  const onFinished = () => {
+    sendRequest();
+  };
+
   function sendRequest() {
-    clearTimeout(timer);
     searchFunction(search_param)
       .then((posts) => {
-        clearTimeout(timer);
-        search_itemsSet(...posts);
+        search_itemsSet(posts);
         loadingSet(false);
       })
       .catch((err) => {
-        clearTimeout(timer);
         search_itemsSet([]);
         loadingSet(false);
       });
@@ -36,16 +35,16 @@ const Search = (props) => {
     if (loading) return <></>;
     if (search_param.length < 1 && !loading) {
       return (
-        <>
+        <div>
           <div>
             <SearchSVG />
           </div>
           <span>خب یک چیزی سرچ کن!</span>
-        </>
+        </div>
       );
     }
-    if (search_items.length > 0) {
-      return search_items.map((video, key) => <VideoCart video={video} key={key} />);
+    if (search_items.posts.length > 0) {
+      return search_items.posts.map((video, key) => <VideoCart video={video} key={key} />);
     } else {
       return <h4>جستجو شما نتیجه ای در بر نداشت :(</h4>;
     }
@@ -53,8 +52,8 @@ const Search = (props) => {
   return (
     <Layout>
       <div className='container'>
-        <input className='search-bar' placeholder='جستجو فیلم: بتمن...' onChange={keyDown} value={search_param} />
-        <div className='container'>
+        <SearchInput onChange={onChange} onFinished={onFinished} className='search-bar' placeholder='جستجو فیلم: بتمن...' />
+        <div className='container' style={{ marginTop: '0px', marginBottom: '0px', paddingLeft: '0px', paddingRight: '0px' }}>
           <Video />
         </div>
         {loading && <div className='loader'></div>}
@@ -64,3 +63,10 @@ const Search = (props) => {
 };
 
 export default Search;
+{
+  /* <input className='search-bar' placeholder='جستجو فیلم: بتمن...' onKeyDown={keyDown} value={search_param}  /> */
+}
+
+/* place-self: center;
+align-self: center;
+justify-self: center; */
