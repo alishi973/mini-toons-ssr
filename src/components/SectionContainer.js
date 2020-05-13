@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import SectionCart from './SectionCart';
 import { getTag } from '../helpers/Request';
-import { getItem } from '../helpers/localStorage';
 
 const getRandomNumber = Math.floor(Math.random() * 6);
 
 const SectionContainer = ({ tag }) => {
-  let favoritedVideo = getItem('favorites');
-  const isLiked = (id) => {
-    const cond = favoritedVideo.filter((favVideo) => favVideo.id === id);
-    console.log(cond);
-    return cond.length === 0 ? false : true;
-  };
   const [videos, videosSet] = useState([]);
   useEffect(() => {
     getTag({ tagname: tag, pagenum: getRandomNumber }).then(({ posts }) => {
@@ -29,7 +22,7 @@ const SectionContainer = ({ tag }) => {
           <span className='vertical-section-blur'>&nbsp;</span>
           <div className='vertical-section'>
             {videos.map((video, index) => (
-              <SectionCart video={video} key={index} liked={isLiked(video.ID)} />
+              <SectionCart video={video} key={index} />
             ))}
           </div>
           <span className='vertical-section-blur'>&nbsp;</span>

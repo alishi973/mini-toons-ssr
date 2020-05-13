@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Hearth, UnHearth } from '../helpers/svgs';
-import { setItem } from '../helpers/localStorage';
-const SectionCart = ({ video, liked }) => {
+import { appendItem, isExist, removeItem } from '../helpers/localStorage';
+const SectionCart = ({ video }) => {
   video = {
     name: video.faname.value,
     image: video.coverimg,
@@ -12,10 +12,16 @@ const SectionCart = ({ video, liked }) => {
     art: video.backdrop_img,
     tags: video.tags.value.split('|'),
   };
+  const [Islike, likedSet] = useState(isExist('favorites', video.id));
   const like = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    setItem('favorites', video);
+    if (!isExist('favorites', video.id)) {
+      appendItem('favorites', video);
+    } else {
+      removeItem('favorites', video);
+    }
+    likedSet((isVideoliked) => !isVideoliked);
   };
   const link = { pathname: `/video/${video.name}`, state: video };
   return (
@@ -23,7 +29,7 @@ const SectionCart = ({ video, liked }) => {
       <Link className='vertical-section-cart' to={link}>
         <span>
           <img src={video.image} />
-          <div onClick={like}>{liked ? <Hearth /> : <UnHearth />}</div>
+          <div onClick={like}>{Islike ? <Hearth /> : <UnHearth />}</div>
         </span>
 
         <p>{video.name}</p>
