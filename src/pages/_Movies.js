@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import VideoCart from '../components/VideoCart';
+import { withRouter } from 'react-router-dom';
 import { getindex } from '../helpers/Request';
-import SectionContainer from '../components/SectionContainer';
 
 import Layout from '../components/Layout';
 
@@ -15,12 +15,17 @@ const Movies = () => {
 
   useEffect(() => {
     loadingSet(true);
-    /* getindex(index).then((videos) => {
+    getindex(index).then((videos) => {
       videosSet(videos);
       loadingSet(false);
-    }); */
-    loadingSet(false); //remove when getIndex come
+    });
+    /* window.addEventListener('scroll', onScroll, false);
+    return () => {
+      window.removeEventListener('scroll', onScroll, false);
+    }; */
   }, []);
+  const onScroll = (e) => ReachEnd(e) && !loading && FetchNewData();
+  const ReachEnd = (e) => document.body.scrollHeight - document.documentElement.scrollTop < e.target.scrollingElement.clientHeight && steps <= max;
 
   const FetchNewData = async () => {
     loadingSet(true);
@@ -28,6 +33,7 @@ const Movies = () => {
     index++;
     const newVideo = await getindex(index);
     stepsSet((lastStep) => lastStep + 1);
+    // steps += 1;
     if (newVideo.length > 0) videosSet((lastVideo) => [...lastVideo, ...newVideo]);
     else {
       alert('error');
@@ -48,10 +54,14 @@ const Movies = () => {
   return (
     <>
       <Layout>
-        <SectionContainer tag='دوبله' />
+        <div className='card-container'>
+          <Video />
+          {loading && <div className='loader'></div>}
+          {videos.length > 4 && !loading && <div onClick={FetchNewData}>صفحه بعدی؟</div>}
+        </div>
       </Layout>
     </>
   );
 };
 
-export default Movies;
+export default withRouter(Movies);

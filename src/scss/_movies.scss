@@ -117,12 +117,13 @@
     }
   }
   p {
-    margin: 0 6px 0 0;
+    margin: 5px 6px 0 0;
     font-size: 13px;
     text-justify: inter-character;
     text-align: right;
     word-wrap: break-word;
   }
+  // max-height: 230px;
 }
 
 @media screen and (max-width: $break-small) {
