@@ -19,3 +19,14 @@ export async function search(param) {
     return { totalcount: 0, totalpages: [], err };
   }
 }
+
+export async function getTag(param) {
+  const url = `${process.env.RAZZLE_CORSAPI}tag/${param.tagname}/${param.pagenum || 1}`;
+  try {
+    const req = await Axios.get(url);
+    const { totalpages = 0, totalcount = 0, posts = [] } = req.data;
+    return { totalcount, totalpages, posts };
+  } catch (err) {
+    return { totalcount: 0, totalpages: [], err };
+  }
+}

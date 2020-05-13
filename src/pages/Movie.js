@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import Layout from '../components/Layout';
 const Movie = (props) => {
-  console.log(props);
   const [state, stateSet] = useState({ ...props.location.state, currentLink: null });
   const { id } = props.match.params;
   const changeResolution = (e) => {
@@ -13,7 +12,7 @@ const Movie = (props) => {
   document.title = state.name;
   return (
     <Layout>
-      <div className='container'>
+      <div>
         <h3 className='rtl'>{state.name}</h3>
         <div className='video-player'>
           <video width='100%' controls poster={state.art} playsInline>

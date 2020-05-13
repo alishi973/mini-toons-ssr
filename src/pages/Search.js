@@ -51,9 +51,9 @@ const Search = (props) => {
   };
   return (
     <Layout>
-      <div className='container'>
+      <div className="search-container" >
         <SearchInput onChange={onChange} onFinished={onFinished} className='search-bar' placeholder='جستجو فیلم: بتمن...' />
-        <div className='container' style={{ marginTop: '0px', marginBottom: '0px', paddingLeft: '0px', paddingRight: '0px' }}>
+        <div className='card-container' style={{ marginTop: '25px' }}>
           <Video />
         </div>
         {loading && <div className='loader'></div>}

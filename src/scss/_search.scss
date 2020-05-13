@@ -1,8 +1,11 @@
 .search-bar {
   background-color: lightgrey;
   border: 0px;
+  width: 100%;
+  margin: 0px auto;
   border-radius: 6px;
   height: 40px;
   text-align: right;
   padding: 0px 10px;
+  box-sizing: border-box;  
 }

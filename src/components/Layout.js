@@ -26,7 +26,7 @@ const Layout = (props) => {
 
         <div></div>
       </div>
-      <>{props.children}</>
+      <div className='container'>{props.children}</div>
       <div className='footer-mobile'>
         <ul>
           <li className={`${isActive('/profile') ? 'active' : ''}`}>

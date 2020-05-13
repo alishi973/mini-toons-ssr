@@ -12,6 +12,14 @@ export default [
     }),
   },
   {
+    path: '/m',
+    exact: true,
+    component: asyncComponent({
+      loader: () => import('./pages/Movies1'),
+      Placeholder: () => <div>درحال بار گزاری</div>,
+    }),
+  },
+  {
     path: '/video/:id',
     exact: true,
     component: asyncComponent({

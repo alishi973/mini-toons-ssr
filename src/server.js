@@ -22,6 +22,13 @@ server.get('/search/:videoName', async (req, res) => {
   console.log('omad');
   return res.json(post.data);
 });
+server.get('/tag/:tag/:pagenum', async (req, res) => {
+  console.log(req.params);
+  const url = `http://beta.minitoons.ir/?api&type=listing&tag=${req.params.tag}&pagenum=${req.params.pagenum || 1}`;
+  const post = await Axios.get(encodeURI(url));
+  console.log('omad');  
+  return res.json(post.data);
+});
 
 server
   .disable('x-powered-by')

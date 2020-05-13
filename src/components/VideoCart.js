@@ -9,6 +9,7 @@ const VideoCart = ({ video }) => {
     content: video.storyplot.value,
     links: video.dllinks || false,
     art: video.backdrop_img,
+    tags: video.tags.value.split('|'),
   };
   const addToFavorites = (e) => {
     //TODO:Add to Favorites
@@ -30,11 +31,9 @@ const VideoCart = ({ video }) => {
             <p>{currentVideo.content}</p>
           </div>
         </div>
-        <div className='movie-cart-footer'>
-          {/* <p className='icon unfav' onClick={addToFavorites}>
+        <div className='movie-cart-footer'>{/* <p className='icon unfav' onClick={addToFavorites}>
             &#10084;
-          </p> */}
-        </div>
+          </p> */}</div>
       </div>
     </>
   );
