@@ -3,7 +3,7 @@ import SectionCart from './SectionCart';
 import { getTag } from '../helpers/Request';
 import { Link } from 'react-router-dom';
 
-const SectionContainer = ({ tag, pagenumber }) => {
+const SectionContainer = ({ tag, pagenumber,header }) => {
   const [videos, videosSet] = useState([]);
   useEffect(() => {
     getTag({ tagname: tag, pagenum: pagenumber }).then(({ posts }) => {
@@ -13,7 +13,7 @@ const SectionContainer = ({ tag, pagenumber }) => {
   return (
     <div className='section-container'>
       <span>
-        <h3>{tag} ها</h3>
+        <h3>{header ? header : `${tag} ها`}</h3>
         <Link to={`/tag/${tag}`}>بیشتر</Link>
       </span>
       {videos.length !== 0 ? (

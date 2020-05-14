@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Hearth, UnHearth } from '../helpers/svgs';
 import { appendItem, isExist, removeItem } from '../helpers/localStorage';
 const SectionCart = ({ video }) => {
@@ -26,14 +26,14 @@ const SectionCart = ({ video }) => {
   const link = { pathname: `/video/${video.name}`, state: video };
   return (
     <>
-      <Link className='vertical-section-cart' to={link}>
+      <NavLink className='vertical-section-cart' to={link}  >
         <span>
           <img src={video.image} />
           <div onClick={like}>{Islike ? <Hearth /> : <UnHearth />}</div>
         </span>
 
         <p>{video.name}</p>
-      </Link>
+      </NavLink>
     </>
   );
 };
