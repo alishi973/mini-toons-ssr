@@ -62,7 +62,7 @@ const Movies = ({ tag,tagNumber }) => {
   );
 };
 Movies.getInitialProps = () => {
-  return { tag: tags(),tagNumber:getRandomNumber(8) };
+  return { tag: tags(),tagNumber:getRandomNumber(1) };
 };
 
 export default Movies;

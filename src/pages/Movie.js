@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Layout from '../components/Layout';
 import SectionContainer from '../components/SectionContainer';
 
 const getRandomNumber = (maxNum) => Math.floor(Math.random() * maxNum);
 const Movie = (props) => {
-  // const [state, stateSet] = useState({ ...props.location.state, currentLink: null });
   const state = { ...props.location.state, currentLink: null };
   const { id } = props.match.params;
   const changeResolution = (e) => {
