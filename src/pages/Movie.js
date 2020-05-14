@@ -18,10 +18,9 @@ const Movie = (props) => {
         <h3 className='rtl'>{state.name}</h3>
         <div className='video-player'>
           <video width='100%' controls poster={state.art} playsInline>
-            {state.links.map(({ filelink, index }) => (
-              <source autoSave="false" key={index} src={filelink} type='video/mp4' />
+            {state.links.map(({ filelink }, index) => (
+              <source key={index} src={filelink} type='video/mp4' />
             ))}
-            {/* <source src={state.currentLink || state.links[0].filelink} type='video/mp4' /> */}
           </video>
         </div>
         <div>
