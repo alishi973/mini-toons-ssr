@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SectionCart from './SectionCart';
 import { getTag } from '../helpers/Request';
+import { Link } from 'react-router-dom';
 
 const SectionContainer = ({ tag, pagenumber }) => {
   const [videos, videosSet] = useState([]);
@@ -13,7 +14,7 @@ const SectionContainer = ({ tag, pagenumber }) => {
     <div className='section-container'>
       <span>
         <h3>{tag} ها</h3>
-        <a href={`/tag/${tag}`}>بیشتر</a>
+        <Link to={`/tag/${tag}`}>بیشتر</Link>
       </span>
       {videos.length !== 0 ? (
         <div style={{ display: 'flex' }}>

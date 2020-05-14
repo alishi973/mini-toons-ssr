@@ -27,5 +27,12 @@ export default [
       Placeholder: () => <div>درحال بارگزاری</div>,
     }),
   },
-  
+  {
+    path: '/tag/:tagName',
+    exact: true,
+    component: asyncComponent({
+      loader: () => import('./pages/Tag'),
+      Placeholder: () => <div>درحال بارگزاری</div>,
+    }),
+  },
 ];
