@@ -65,30 +65,42 @@
   .movie-cart-image {
     z-index: 1;
     width: 40%;
-    & img{
+    & img {
       width: 100%;
       min-width: 100%;
       max-width: 100%;
     }
   }
   .movie-cart-content {
-    display: none;
+    max-height: 95px;
+    font-size: 13px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .movie-cart-info {
-    margin: 0 auto;
-    height: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
   }
   .movie-cart-title {
     * {
-      text-align: center;
+      margin: 10px 0px 0px;
+      font-size: 15px;
+      white-space: nowrap;
+      max-width: 200px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      text-align: right;
     }
   }
   .movie-cart-footer {
-    background-color: transparent;
-    display: none;
-    padding-left: 0;
+    // background-color: rgb(235, 126, 144);
+    background-color: dodgerblue;
+    padding: 0;
+    * {
+      margin-left: 3px;
+      max-height: 15px;
+    }
   }
 }
 

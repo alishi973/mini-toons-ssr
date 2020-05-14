@@ -19,7 +19,7 @@ const Movie = (props) => {
         <div className='video-player'>
           <video width='100%' controls poster={state.art} playsInline>
             {state.links.map(({ filelink, index }) => (
-              <source key={index} src={filelink} type='video/mp4' />
+              <source autoSave="false" key={index} src={filelink} type='video/mp4' />
             ))}
             {/* <source src={state.currentLink || state.links[0].filelink} type='video/mp4' /> */}
           </video>
@@ -36,7 +36,7 @@ const Movie = (props) => {
         <h4 className='content'>{state.content}</h4>
       </div>
       {state.tags.map((eachTag, index) => {
-        return <SectionContainer key={index} tag={eachTag} header={`فیلم های ${eachTag} بیشتر`} pagenumber={getRandomNumber(10)} />;
+        return <SectionContainer key={index} tag={eachTag} header={`فیلم های ${eachTag} بیشتر`} pagenumber={getRandomNumber(1)} />;
       })}
     </Layout>
   );

@@ -19,7 +19,6 @@ const Search = (props) => {
   const onFinished = () => {
     sendRequest();
   };
-
   function sendRequest() {
     searchFunction(search_param)
       .then((posts) => {
@@ -51,7 +50,7 @@ const Search = (props) => {
   };
   return (
     <Layout>
-      <div className="search-container" >
+      <div className='search-container'>
         <SearchInput onChange={onChange} onFinished={onFinished} className='search-bar' placeholder='جستجو فیلم: بتمن...' />
         <div className='card-container' style={{ marginTop: '25px' }}>
           <Video />

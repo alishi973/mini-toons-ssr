@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Hearth, UnHearth } from '../helpers/svgs';
+import { isExist, addToLike } from '../helpers/localStorage';
 const VideoCart = ({ video }) => {
   const currentVideo = {
     name: video.postname.split('-')[0].trim() || video.postname,
@@ -11,12 +12,14 @@ const VideoCart = ({ video }) => {
     art: video.backdrop_img,
     tags: video.tags.value.split('|'),
   };
+  const [Islike, likedSet] = useState(isExist('favorites', currentVideo.id));
   const addToFavorites = (e) => {
-    //TODO:Add to Favorites
     e.stopPropagation();
     e.preventDefault();
-    alert('انشالله اد میکنم');
+    addToLike(currentVideo);
+    likedSet((isVideoliked) => !isVideoliked);
   };
+
   const CartContent = () => (
     <>
       <div className='movie-cart-image'>
@@ -31,9 +34,9 @@ const VideoCart = ({ video }) => {
             <p>{currentVideo.content}</p>
           </div>
         </div>
-        <div className='movie-cart-footer'>{/* <p className='icon unfav' onClick={addToFavorites}>
-            &#10084;
-          </p> */}</div>
+        <div className='movie-cart-footer'>
+          <span onClick={addToFavorites}>{Islike ? <Hearth /> : <UnHearth />}</span>
+        </div>
       </div>
     </>
   );
@@ -51,7 +54,7 @@ const VideoCart = ({ video }) => {
     );
   } else
     return (
-      <Link className={`movie-cart `} to={{ pathname: `/video/${video.faname.value}`, state: currentVideo }}>
+      <Link className={`movie-cart `} to={{ pathname: `/video/${currentVideo.name}`, state: currentVideo }}>
         <CartContent />
       </Link>
     );

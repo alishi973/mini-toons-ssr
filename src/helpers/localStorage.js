@@ -15,3 +15,11 @@ export const removeItem = (name, video) => {
   const otherItem = lastItems.filter((eachObject) => JSON.parse(eachObject).id !== video.id);
   setItem(name, otherItem);
 };
+
+export const addToLike = (video) => {
+  if (!isExist('favorites', video.id)) {
+    appendItem('favorites', video);
+  } else {
+    removeItem('favorites', video);
+  }
+};

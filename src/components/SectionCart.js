@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Hearth, UnHearth } from '../helpers/svgs';
-import { appendItem, isExist, removeItem } from '../helpers/localStorage';
+import { isExist, addToLike } from '../helpers/localStorage';
 const SectionCart = ({ video }) => {
   video = {
     name: video.faname.value,
@@ -16,17 +16,13 @@ const SectionCart = ({ video }) => {
   const like = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    if (!isExist('favorites', video.id)) {
-      appendItem('favorites', video);
-    } else {
-      removeItem('favorites', video);
-    }
+    addToLike(video);
     likedSet((isVideoliked) => !isVideoliked);
   };
   const link = { pathname: `/video/${video.name}`, state: video };
   return (
     <>
-      <NavLink className='vertical-section-cart' to={link}  >
+      <NavLink className='vertical-section-cart' to={link}>
         <span>
           <img src={video.image} />
           <div onClick={like}>{Islike ? <Hearth /> : <UnHearth />}</div>

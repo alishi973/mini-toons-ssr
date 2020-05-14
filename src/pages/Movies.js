@@ -9,14 +9,14 @@ import Layout from '../components/Layout';
 
 const getRandomNumber = (maxNum) => Math.floor(Math.random() * maxNum);
 let index = getRandomNumber(296);
-const Movies = ({ tag,tagNumber }) => {
+const Movies = ({ tag, tagNumber }) => {
   const [videos, videosSet] = useState(false);
   const [loading, loadingSet] = useState(false);
   // const [steps, stepsSet] = useState(0);
   // const [max, maxSet] = useState(5);
-
   useEffect(() => {
     loadingSet(true);
+    document.title = 'خانه';
     getindex(index).then((videos) => {
       videosSet(videos);
       loadingSet(false);
@@ -62,7 +62,7 @@ const Movies = ({ tag,tagNumber }) => {
   );
 };
 Movies.getInitialProps = () => {
-  return { tag: tags(),tagNumber:getRandomNumber(1) };
+  return { tag: tags(), tagNumber: getRandomNumber(1) };
 };
 
 export default Movies;
