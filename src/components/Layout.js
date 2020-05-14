@@ -21,7 +21,7 @@ const Layout = (props) => {
         <span></span>
 
         <div className='title'>
-          <h3>مینی تونز</h3>
+          <h3>مینی تونز😍</h3>
         </div>
 
         <div></div>

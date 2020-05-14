@@ -7,9 +7,9 @@ import SectionContainer from '../components/SectionContainer';
 
 import Layout from '../components/Layout';
 
-const getRandomNumber = Math.floor(Math.random() * 296);
-let index = getRandomNumber;
-const Movies = ({ tag }) => {
+const getRandomNumber = (maxNum) => Math.floor(Math.random() * maxNum);
+let index = getRandomNumber(296);
+const Movies = ({ tag,tagNumber }) => {
   const [videos, videosSet] = useState(false);
   const [loading, loadingSet] = useState(false);
   // const [steps, stepsSet] = useState(0);
@@ -47,7 +47,7 @@ const Movies = ({ tag }) => {
   return (
     <>
       <Layout>
-        <SectionContainer tag={tag} />
+        <SectionContainer tag={tag} pagenumber={tagNumber} />
         <div style={{ marginTop: '50px' }} className='card-container'>
           <Video />
           {videos.length != 0 && !loading && (
@@ -62,7 +62,7 @@ const Movies = ({ tag }) => {
   );
 };
 Movies.getInitialProps = () => {
-  return { tag: tags() };
+  return { tag: tags(),tagNumber:getRandomNumber(8) };
 };
 
 export default Movies;

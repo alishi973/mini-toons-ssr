@@ -12,7 +12,6 @@ export const setItem = (name, object) => {
 
 export const removeItem = (name, video) => {
   const lastItems = getItem(name);
-  console.log(video);
   const otherItem = lastItems.filter((eachObject) => JSON.parse(eachObject).id !== video.id);
   setItem(name, otherItem);
 };

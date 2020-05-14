@@ -27,4 +27,5 @@ export default [
       Placeholder: () => <div>درحال بارگزاری</div>,
     }),
   },
+  
 ];

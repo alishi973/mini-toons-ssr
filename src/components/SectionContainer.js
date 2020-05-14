@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import SectionCart from './SectionCart';
 import { getTag } from '../helpers/Request';
 
-const getRandomNumber = Math.floor(Math.random() * 6);
-
-const SectionContainer = ({ tag }) => {
+const SectionContainer = ({ tag, pagenumber }) => {
   const [videos, videosSet] = useState([]);
   useEffect(() => {
-    getTag({ tagname: tag, pagenum: getRandomNumber }).then(({ posts }) => {
+    getTag({ tagname: tag, pagenum: pagenumber }).then(({ posts }) => {
       videosSet(posts);
     });
   }, []);
