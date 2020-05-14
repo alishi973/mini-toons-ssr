@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { getTag } from '../helpers/Request';
+import { tags } from '../tags';
 import VideoCart from '../components/VideoCart';
 import Layout from '../components/Layout';
+import { Redirect } from 'react-router-dom';
 
-const Tag = (props) => {
-  const tagName = props.match.params.tagName;
+const Tag = ({ tagName }) => {
   const [page, pageSet] = useState(1);
   const [videos, videosSet] = useState([]);
   const [isEnd, isEndSet] = useState(false);
@@ -35,6 +36,7 @@ const Tag = (props) => {
     }
   };
   const nextPage = () => pageSet((lastPage) => lastPage + 1);
+  if (!tagName) return <Redirect to={'/'} />;
   return (
     <Layout header={'برچسب ' + tagName + ' ها'}>
       <div className='card-container'>
@@ -48,6 +50,10 @@ const Tag = (props) => {
       </div>
     </Layout>
   );
+};
+Tag.getInitialProps = async (props) => {
+  if (tags.indexOf(decodeURI(props.match.params.tagName)) !== -1) return { tagName: decodeURI(props.match.params.tagName) };
+  else return { tagName: false };
 };
 
 export default Tag;
