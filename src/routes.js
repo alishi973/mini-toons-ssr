@@ -28,6 +28,14 @@ export default [
     }),
   },
   {
+    path: '/profile',
+    exact: true,
+    component: asyncComponent({
+      loader: () => import('./pages/Profile'),
+      Placeholder: () => <div>درحال بارگزاری</div>,
+    }),
+  },
+  {
     path: '/tag/:tagName',
     exact: true,
     component: asyncComponent({

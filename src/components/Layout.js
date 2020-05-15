@@ -4,6 +4,7 @@ import { User, Search, Home } from '../helpers/svgs';
 
 const Layout = (props) => {
   const address = useLocation();
+  const imageSrc = 'https://lh3.googleusercontent.com/-7fMzrATHVVI/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnMzrS3w3qv8PdhVoQL_JLZGinmPQ/photo.jpg?sz=100';
   const isActive = (route) => address.pathname === route;
   const scrollToTop = (e) => {
     if (address.pathname == '/') {
@@ -33,7 +34,8 @@ const Layout = (props) => {
         <ul>
           <li className={`${isActive('/profile') ? 'active' : ''}`}>
             <Link to='/profile'>
-              <User />
+              {/* <User /> */}
+              <img className={`user-image-layout ${isActive('/profile') ? 'active' : ''} `} src={imageSrc} />
               <span>پروفایل</span>
             </Link>
           </li>

@@ -3,15 +3,20 @@ import { Link } from 'react-router-dom';
 import { Hearth, UnHearth } from '../helpers/svgs';
 import { isExist, addToLike } from '../helpers/localStorage';
 const VideoCart = ({ video }) => {
-  const currentVideo = {
-    name: video.postname.split('-')[0].trim() || video.postname,
-    image: video.coverimg,
-    id: video.ID,
-    content: video.storyplot.value,
-    links: video.dllinks || false,
-    art: video.backdrop_img,
-    tags: video.tags.value.split('|'),
-  };
+  let currentVideo;
+  if (!video.name)
+    currentVideo = {
+      name: video.postname.split('-')[0].trim() || video.postname,
+      image: video.coverimg,
+      id: video.ID,
+      content: video.storyplot.value,
+      summary: video.storyplot.value.slice(0, 130) + '...',
+      links: video.dllinks || false,
+      art: video.backdrop_img,
+      tags: video.tags.value.split('|'),
+    };
+  else currentVideo = video;
+
   const [Islike, likedSet] = useState(isExist('favorites', currentVideo.id));
   const addToFavorites = (e) => {
     e.stopPropagation();
@@ -31,7 +36,7 @@ const VideoCart = ({ video }) => {
             <h3>{currentVideo.name}</h3>
           </div>
           <div className='movie-cart-content'>
-            <p>{currentVideo.content}</p>
+            <p>{currentVideo.summary}</p>
           </div>
         </div>
         <div className='movie-cart-footer'>

@@ -35,7 +35,8 @@ svg > .active {
   // background-color: yellowgreen;
   text-align: center;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 .title {
@@ -84,6 +85,13 @@ svg > .active {
           margin-top: 4px;
         }
       }
+    }
+  }
+  .user-image-layout {
+    max-width: 30px;
+    border-radius: 50%;
+    &.active {
+      border: 2px solid rgb(235, 126, 144);
     }
   }
 }
