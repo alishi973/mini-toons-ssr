@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from '../components/Layout';
-import VideoCart from '../components/VideoCart';
+import VideoCard from '../components/VideoCard';
 import { getItem } from '../helpers/localStorage';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ const Profile = (props) => {
     if (videos.length > 0) {
       return videos.map((video, key) => {
         video = JSON.parse(video);
-        return <VideoCart video={video} key={key} />;
+        return <VideoCard video={video} key={key} />;
       });
     } else {
       return <div>هیچ ویدیویی موجود نیست</div>;

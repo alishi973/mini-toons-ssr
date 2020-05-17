@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
-import VideoCart from '../components/VideoCart';
+import VideoCard from '../components/VideoCard';
 import SearchInput from '../components/InputField';
 import { search as searchFunction } from '../helpers/Request';
 import { Search as SearchSVG } from '../helpers/svgs';
@@ -43,7 +43,7 @@ const Search = (props) => {
       );
     }
     if (search_items.posts.length > 0) {
-      return search_items.posts.map((video, key) => <VideoCart video={video} key={key} />);
+      return search_items.posts.map((video, key) => <VideoCard video={video} key={key} />);
     } else {
       return <h4>جستجو شما نتیجه ای در بر نداشت :(</h4>;
     }

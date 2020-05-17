@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getTag } from '../helpers/Request';
 import { tags } from '../tags';
-import VideoCart from '../components/VideoCart';
+import VideoCard from '../components/VideoCard';
 import Layout from '../components/Layout';
 import { Redirect } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ const Tag = ({ tagName }) => {
 
   const Video = () => {
     if (videos && videos.length > 0) {
-      return videos.map((video, key) => <VideoCart video={video} key={key} />);
+      return videos.map((video, key) => <VideoCard video={video} key={key} />);
     } else {
       // TODO: Add Skeleton
       return <></>;
