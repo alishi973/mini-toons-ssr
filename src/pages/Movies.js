@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import VideoCart from '../components/VideoCart';
+import VideoCart from '../components/VideoCard';
 import { getindex } from '../helpers/Request';
 import tags from '../tags';
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import SectionCart from './SectionCart';
+import SectionCard from './SectionCard';
 import { getTag } from '../helpers/Request';
 import { Link } from 'react-router-dom';
 
@@ -20,7 +20,7 @@ const SectionContainer = ({ tag, pagenumber, header }) => {
         <div style={{ display: 'flex' }}>
           <span className='vertical-section-blur'>&nbsp;</span>
           <div className='vertical-section'>
-            {videos.map((video, index) => video.dllinks.length !== 0 && <SectionCart video={video} key={index} />)}
+            {videos.map((video, index) => video.dllinks.length !== 0 && <SectionCard video={video} key={index} />)}
           </div>
           <span className='vertical-section-blur'>&nbsp;</span>
         </div>

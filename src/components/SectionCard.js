@@ -8,6 +8,7 @@ const SectionCart = ({ video }) => {
     image: video.coverimg,
     id: video.ID,
     content: video.storyplot.value,
+    summary: video.storyplot.value.slice(0, 130) + '...',
     links: video.dllinks || false,
     art: video.backdrop_img,
     tags: video.tags.value.split('|'),
